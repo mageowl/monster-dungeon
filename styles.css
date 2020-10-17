@@ -1,0 +1,21 @@
+/* Font */
+@import "assets/font/stylesheet.css";
+
+/* Stylesheets */
+@import "assets/stylesheets/colors.css";
+@import "assets/stylesheets/cards.css";
+@import "assets/stylesheets/hand.css";
+@import "assets/stylesheets/battlefield.css";
+
+body {
+	font-family: zepto;
+	cursor: pointer !important;
+	background-color: var(--c-black-light);
+	margin: 0;
+	image-rendering: pixelated;
+}
+
+* {
+	user-select: none;
+	-webkit-user-drag: none;
+}

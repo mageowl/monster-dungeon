@@ -1,0 +1,19 @@
+#hand {
+	display: flex;
+	position: fixed;
+	bottom: 90px;
+	left: calc(50vw - 260px);
+	width: 500px;
+	height: 80px;
+	background-color: var(--c-gray);
+	padding: 10px;
+	border-radius: 10px;
+	overflow: visible;
+}
+
+#deck {
+	display: flex;
+	position: fixed;
+	bottom: 20px;
+	left: 10px;
+}

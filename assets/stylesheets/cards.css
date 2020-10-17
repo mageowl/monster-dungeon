@@ -1,0 +1,55 @@
+.card {
+	width: 160px;
+	height: 150px;
+	background-color: var(--c-black);
+	color: var(--c-white);
+	border-radius: 8px;
+	text-align: center;
+	padding-top: 10px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.card:not(.back) {
+	opacity: 1;
+	position: relative;
+	top: 200px;
+	transition: opacity 200ms, top 250ms;
+}
+
+.card:not(:first-child) {
+	margin-left: 10px;
+}
+
+.card .icon {
+	width: 100px;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.card .description {
+	position: relative;
+	top: 20px;
+	width: 130px;
+	height: 110px;
+	background-color: var(--c-black);
+	transition: top 300ms;
+	border: var(--c-white) 5px solid;
+	border-radius: 8px;
+	padding: 10px;
+	padding-bottom: 0;
+}
+
+#hand.playerTurn .card:hover .description {
+	top: -100px;
+}
+
+.card.back {
+	border: 5px solid var(--c-white);
+	box-sizing: border-box;
+}
+
+.card.back .icon {
+	margin-top: calc(50% - 65px);
+}

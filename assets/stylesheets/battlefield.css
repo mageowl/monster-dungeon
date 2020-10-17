@@ -1,0 +1,52 @@
+#battlefield {
+	height: calc(100vh - 190px);
+	display: flex;
+}
+
+#battlefield > div {
+	height: calc(100vh - 190px);
+	width: 50vw;
+	display: inline-flex;
+}
+
+.charecter {
+	width: max-content;
+	display: inline-block;
+	margin: auto;
+	transition: padding-left 200ms;
+	padding-left: 0;
+}
+
+.charecter .img {
+	width: 64px;
+}
+
+.charecter .hp {
+	background-color: var(--c-gray);
+	width: 60px;
+	height: 15px;
+	margin: auto;
+	margin-bottom: 5px;
+	border-radius: 2px;
+	overflow: hidden;
+}
+.charecter .hp .bar {
+	background-color: var(--c-red);
+	display: block;
+	height: 15px;
+	box-sizing: border-box;
+	font-size: 13px;
+	line-height: 15px;
+	transition: width 150ms;
+}
+
+.charecter .hp .bar span {
+	padding-left: 2px;
+}
+
+.charecter .name {
+	color: var(--c-white);
+	margin-bottom: 2px;
+	display: block;
+	text-align: center;
+}
