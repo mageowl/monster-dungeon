@@ -26,7 +26,7 @@ export function createCard(data, pool) {
 	el.onclick = () => {
 		if (getTurn() == turn.ENEMY) return;
 
-		updateCharecters(compileEffects(data.effects, getCharecters()));
+		updateCharecters(compileEffects(data.effects, getCharecters(), "player"));
 
 		el.style.opacity = 0;
 		setTimeout(() => {

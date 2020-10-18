@@ -6,7 +6,7 @@ export const effectType = {
 	BURN: "burn"
 };
 
-export function compileEffects(effects, charecters) {
+export function compileEffects(effects, charecters, side) {
 	let charectersCopy = deepCopy(charecters);
 
 	for (const effect of effects) {
@@ -14,10 +14,13 @@ export function compileEffects(effects, charecters) {
 
 		switch (effect.type) {
 			case effectType.MELEE_DAMAGE: {
-				target = Object.values(charectersCopy).filter(
-					(o) => o.position == 0 && o.side == "enemy"
-				)[0];
-				console.log(target.el);
+				let max = Infinity;
+				target = Object.values(charectersCopy).filter((o) => {
+					let viable = o.position <= max && o.side != side;
+					if (viable) max = o.position;
+					return viable;
+				})[0];
+				console.log(target);
 				target.hp = Math.max(target.hp - effect.damage, 0);
 				break;
 			}
@@ -25,7 +28,7 @@ export function compileEffects(effects, charecters) {
 			case effectType.RANGED_DAMAGE: {
 				let min = -1;
 				target = Object.values(charectersCopy).filter((o) => {
-					let viable = o.position >= min && o.side == "enemy";
+					let viable = o.position >= min && o.side != side;
 					if (viable) min = o.position;
 					return viable;
 				})[0];
