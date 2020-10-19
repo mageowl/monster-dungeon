@@ -28,6 +28,10 @@ export function createCard(data, pool) {
 
 		updateCharecters(compileEffects(data.effects, getCharecters(), "player"));
 
+		Object.values(getCharecters()).filter(
+			(o) => o.side == "player"
+		)[0].el.style.animation = "player-attack 200ms";
+
 		el.style.opacity = 0;
 		setTimeout(() => {
 			document
@@ -36,7 +40,7 @@ export function createCard(data, pool) {
 
 			el.remove();
 			nextTurn();
-		}, 200);
+		}, 400);
 	};
 	setTimeout(() => {
 		el.style.top = 0;

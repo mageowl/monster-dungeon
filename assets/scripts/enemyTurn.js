@@ -17,6 +17,8 @@ export function enemyTurn() {
 		.filter((char) => char.side == "enemy")
 		.forEach((char) => {
 			runAI(char.turnAI);
+
+			char.el.style.animation = "enemy-attack 200ms";
 		});
 
 	updateCharecters(charecters);
