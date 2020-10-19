@@ -19,6 +19,9 @@ export function enemyTurn() {
 			runAI(char.turnAI);
 
 			char.el.style.animation = "enemy-attack 200ms";
+			setTimeout(() => {
+				char.el.style.animation = "";
+			}, 200);
 		});
 
 	updateCharecters(charecters);

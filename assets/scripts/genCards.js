@@ -40,6 +40,10 @@ export function createCard(data, pool) {
 
 			el.remove();
 			nextTurn();
+
+			Object.values(getCharecters()).filter(
+				(o) => o.side == "player"
+			)[0].el.style.animation = "";
 		}, 400);
 	};
 	setTimeout(() => {
