@@ -41,7 +41,10 @@ export function createCharecter(type, parent) {
 	] = {
 		...data,
 		side: parent.id,
-		position: Array.from(parent.children).indexOf(el),
+		position:
+			parent.id == "player"
+				? parent.children.length - 1 - Array.from(parent.children).indexOf(el)
+				: Array.from(parent.children).indexOf(el),
 		el
 	};
 

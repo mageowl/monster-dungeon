@@ -2,6 +2,7 @@
 @import "assets/font/stylesheet.css";
 
 /* Stylesheets */
+@import "assets/stylesheets/animations.css";
 @import "assets/stylesheets/colors.css";
 @import "assets/stylesheets/cards.css";
 @import "assets/stylesheets/hand.css";

@@ -26,7 +26,11 @@ export function createCard(data, pool) {
 	el.onclick = () => {
 		if (getTurn() == turn.ENEMY) return;
 
-		updateCharecters(compileEffects(data.effects, getCharecters()));
+		updateCharecters(compileEffects(data.effects, getCharecters(), "player"));
+
+		Object.values(getCharecters()).filter(
+			(o) => o.side == "player"
+		)[0].el.style.animation = "player-attack 200ms";
 
 		el.style.opacity = 0;
 		setTimeout(() => {
@@ -36,7 +40,11 @@ export function createCard(data, pool) {
 
 			el.remove();
 			nextTurn();
-		}, 200);
+
+			Object.values(getCharecters()).filter(
+				(o) => o.side == "player"
+			)[0].el.style.animation = "";
+		}, 400);
 	};
 	setTimeout(() => {
 		el.style.top = 0;

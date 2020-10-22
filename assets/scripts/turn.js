@@ -17,7 +17,12 @@ export function nextTurn() {
 	currentTurn = currentTurn == turn.PLAYER ? turn.ENEMY : turn.PLAYER;
 	hand.classList.add(currentTurn);
 
-	// if (currentTurn == turn.ENEMY) enemyTurn().then(nextTurn());
+	if (currentTurn == turn.ENEMY) {
+		enemyTurn();
+		setTimeout(() => {
+			nextTurn();
+		}, 100);
+	}
 
 	return currentTurn;
 }
