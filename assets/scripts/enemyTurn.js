@@ -3,10 +3,8 @@ import { compileEffects } from "./effects.js";
 
 export function enemyTurn() {
 	let charecters = getCharecters();
-	console.log(charecters);
 
 	function runAI(ai) {
-		console.log(ai);
 		switch (ai.type) {
 			case "effect":
 				charecters = compileEffects(ai.effects, getCharecters(), "enemy");

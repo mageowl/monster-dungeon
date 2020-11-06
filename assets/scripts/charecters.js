@@ -1,4 +1,51 @@
 import { deepCopy } from "./deepCopy.js";
+import { effectType } from "./effects.js";
+
+export const charecterTypes = {
+	blob: {
+		name: "Blob",
+		hp: 2,
+		maxHP: 2,
+		turnAI: {
+			type: "effect",
+			effects: [{ type: effectType.MELEE_DAMAGE, damage: 1 }]
+		},
+		img: "./assets/art/charecters/blob.png",
+		id: "blob"
+	},
+	player: {
+		name: "Player",
+		hp: 20,
+		maxHP: 20,
+		img: "./assets/art/charecters/player-basic.png",
+		id: "player"
+	},
+	snake: {
+		name: "Snake",
+		hp: 3,
+		maxHP: 3,
+		turnAI: {
+			type: "effect",
+			effects: [
+				{ type: effectType.MELEE_DAMAGE, damage: 2 },
+				{ type: effectType.POISON }
+			]
+		},
+		img: "./assets/art/charecters/snake.png",
+		id: "snake"
+	},
+	ogre: {
+		name: "Ogre",
+		hp: 5,
+		maxHP: 5,
+		turnAI: {
+			type: "effect",
+			effects: [{ type: effectType.MELEE_DAMAGE, damage: 4 }]
+		},
+		img: "./assets/art/charecters/ogre.png",
+		id: "ogre"
+	}
+};
 
 let charecters = {};
 
@@ -62,6 +109,11 @@ export function updateCharecters(newCharecters) {
 		hpBar.innerHTML = `<span>${obj.hp}/${obj.maxHP}</span>`;
 		hpBar.style.width = `${(100 * obj.hp) / obj.maxHP}%`;
 	});
+}
+
+export function killCharecter(name) {
+	charecters[name].el.classList.add("dead");
+	delete charecters[name];
 }
 
 //<div class="charecter">

@@ -48,6 +48,7 @@
 .card.back {
 	border: 5px solid var(--c-white);
 	box-sizing: border-box;
+	display: block;
 }
 
 .card.back .icon {

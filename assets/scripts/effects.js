@@ -3,7 +3,8 @@ import { deepCopy } from "./deepCopy.js";
 export const effectType = {
 	MELEE_DAMAGE: "melee-damage",
 	RANGED_DAMAGE: "ranged-damage",
-	BURN: "burn"
+	BURN: "burn",
+	POISON: "poison"
 };
 
 export function compileEffects(effects, charecters, side) {
@@ -20,7 +21,6 @@ export function compileEffects(effects, charecters, side) {
 					if (viable) max = o.position;
 					return viable;
 				})[0];
-				console.log(target);
 				target.hp = Math.max(target.hp - effect.damage, 0);
 				break;
 			}

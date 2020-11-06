@@ -1,65 +1,29 @@
 import { createCard, genCards } from "./assets/scripts/genCards.js";
-import { createCharecter, getCharecters } from "./assets/scripts/charecters.js";
-import { charecters } from "./assets/scripts/enemies.js";
+import {
+	createCharecter,
+	getCharecters,
+	charecterTypes
+} from "./assets/scripts/charecters.js";
+import { getDeck } from "./assets/scripts/deck.js";
 
 const hand = [];
 
 const handEl = document.getElementById("hand");
 
-let deck = [
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball",
-	"slash",
-	"bowArrow",
-	"fireball"
-];
-
 window.addEventListener("load", () => {
 	// Charecters
 	createCharecter(
-		charecters.player,
+		charecterTypes.player,
 		document.querySelector("#battlefield > #player")
 	);
 
 	createCharecter(
-		charecters.blob,
+		charecterTypes.snake,
 		document.querySelector("#battlefield > #enemy")
 	);
 
-	console.log(
-		getCharecters(),
-		Object.values(getCharecters()).filter((o) => o.isPlayer)
-	);
-
 	// Hand
-	let gen = genCards(deck, 3);
-	deck = gen.pool;
-	gen.cards.forEach((card) => {
+	genCards(3).forEach((card) => {
 		hand.push(card.cardData);
 		handEl.appendChild(card.el);
 	});

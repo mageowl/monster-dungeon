@@ -1,26 +1,26 @@
 import { cards } from "./cards.js";
 import { getCharecters, updateCharecters } from "./charecters.js";
+import { getDeck, removeFromDeck } from "./deck.js";
 import { effectType, compileEffects } from "./effects.js";
 import { getTurn, nextTurn, turn } from "./turn.js";
 
-export function genCards(pool, qty = 1) {
+export function genCards(qty = 1) {
 	let elements = [];
-	let resultPool = [...pool];
 
 	for (let i = 0; i < qty; i++) {
-		let cardName = resultPool.splice(
-			Math.floor(Math.random() * resultPool.length),
+		let cardName = removeFromDeck(
+			Math.floor(Math.random() * getDeck().length),
 			1
-		)[0];
+		);
 		let cardData = cards[cardName];
 
-		elements.push({ el: createCard(cardData, pool), cardData });
+		elements.push({ el: createCard(cardData), cardData });
 	}
 
-	return { cards: elements, pool: resultPool };
+	return elements;
 }
 
-export function createCard(data, pool) {
+export function createCard(data) {
 	let el = document.createElement("div");
 	el.classList.add("card");
 	el.onclick = () => {
@@ -34,9 +34,7 @@ export function createCard(data, pool) {
 
 		el.style.opacity = 0;
 		setTimeout(() => {
-			document
-				.getElementById("hand")
-				.insertBefore(genCards(pool, 1).cards[0].el, el);
+			document.getElementById("hand").insertBefore(genCards(1)[0].el, el);
 
 			el.remove();
 			nextTurn();
@@ -45,6 +43,8 @@ export function createCard(data, pool) {
 				(o) => o.side == "player"
 			)[0].el.style.animation = "";
 		}, 400);
+
+		el.onclick = null;
 	};
 	setTimeout(() => {
 		el.style.top = 0;

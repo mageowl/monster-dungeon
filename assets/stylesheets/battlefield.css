@@ -13,8 +13,14 @@
 	width: max-content;
 	display: inline-block;
 	margin: auto;
-	transition: padding-left 200ms;
+	transition: padding-top 200ms, opacity 300ms;
 	padding-left: 0;
+	opacity: 1;
+}
+
+.charecter.dead {
+	opacity: 0.5;
+	padding-top: 20px;
 }
 
 .charecter .img {
